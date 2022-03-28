@@ -1,0 +1,67 @@
+/** Fontes **/
+@import url(
+    'https://fonts.googleapis.com/css2?family=Source+Sans+Pro'
+);
+.font-title {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+}
+.font-body {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 200;
+}
+/** Cores **/
+.color-ziondev {
+    background-color: #56aca9ff;
+}
+.color-bar {
+    background-color: #f2f2f2ff;
+}
+/** Tamanhos e espaçamentos **/
+.all-width {
+    width: "100%";
+    height: auto;
+}
+/** Regras gerais **/
+* {
+    padding: 0;
+}
+p {
+    margin: 0;
+}
+body {
+    background-color: white;
+    margin: 0;
+}
+/** Barra superior **/
+.header-box {
+    text-align: left;
+}
+.header-text {
+    padding: 0.5em;
+    margin-left: 0.5em;
+}
+/** Barra inferior **/
+.footer-box {
+    position: absolute;
+    width: 100%;
+    height: 35px;
+    bottom: 0;
+}
+/** Conteúdo geral **/
+.logo-box {
+    margin-top: 100px;
+    text-align: center;
+}
+.logo-img {
+    width: 200px;
+    height: auto;
+    padding: 1em;
+}
+.title {
+    font-size: 22px;
+}
+.body {
+    font-size: 16px;
+    color: darkslategray;
+}

@@ -1,22 +1,20 @@
 ---
 title: 'About Me'
-avatar: 'me.jpg'
+avatar: 'me.jpeg'
 skills:
   - Coding
   - Reading
-  - Painting
-  - Crafting
   - Problem Solving
-  - Team Management
-  - Mentoring
+  - Crafting
+  - Swimming
 ---
 
-Hello! I'm Yashita Namdeo, from Indore, also known as Mini Mumbai and the Cleanest City of India.
+Hello! I'm Leonardo Klein Rezende, IT Analyst from Brazil.
 
-I am a creative, time punctual, dedicated, goal-oriented individual with decent moral Values and Ethicates along with a high-energy level, honed communication skills, strong organizational skills, and meticulous attention to detail.
+Currently Senior Technology Analyst and SysAdmin at Sintel (São Paulo), with previous experience at Grupo Carlos Alberto Polato (Primavera do Leste - MT).
 
-I am pursuing my Bachelors from [SVVV, Indore](https://www.svvv.edu.in/) in Computer Science and Engineering (2018-2022) my current GPA is [3.7]() out of 4.
+Graduated in Systems Analysis and Development (Centro Universitário de Maringá), Information Technology Management (Universidade Cruzeiro do Sul), and MBA in Cloud Computing (IGTI/XP Educação).
 
-I am a member of [Developer Student Club - SVVV](https://dsc.community.dev/shri-vaishnav-vidyapeeth-vishwavidyalaya/) and have also been awarded 75% Merit Scholarship(Top 10%) by my college.
+Certified Remote Worker Professional (RWCP), Scrum Foundation Professional Certificate (SFPC) and Lifelong Learning (LLL) by CertiProf.
 
-Here are a few of the other activities that I love to do!
+Languages: Native Brazilian Portuguese, Fluent English

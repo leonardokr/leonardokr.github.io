@@ -1,10 +1,10 @@
 ---
 title: 'Hello, my name is'
-name: 'Yashita Namdeo'
-subtitle: 'I love exploring new things!'
+name: 'Leonardo Klein'
+subtitle: "I'm a software developer."
 buttonText: 'Get In Touch'
 ---
 
-I'm a Final Year Computer Science Engineering Student at SVVV, Indore. Primarily interested in Web Development and Data Science.
+I have been a developer for over 13 years and have participated in several projects.
 
-I enjoy learning new skills and implementing them in real life!
+My interest in programming started when I was developing plugins and modifications for computer games!

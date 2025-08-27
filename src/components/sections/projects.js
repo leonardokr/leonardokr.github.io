@@ -6,7 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
-import { theme, mixins, media, Section, Button } from '@styles';
+import { theme, mixins, media, Section } from '@styles';
 const { colors, fontSizes, fonts } = theme;
 
 const StyledContainer = styled(Section)`
@@ -71,7 +71,7 @@ const StyledProjectHeader = styled.div`
   margin-bottom: 30px;
 `;
 const StyledFolder = styled.div`
-  color: ${colors.green};
+  color: ${colors.accent};
   svg {
     width: 40px;
     height: 40px;
@@ -114,7 +114,7 @@ const StyledTechList = styled.ul`
   li {
     font-family: ${fonts.SFMono};
     font-size: ${fontSizes.xs};
-    color: ${colors.green};
+    color: ${colors.accent};
     line-height: 1.75;
     margin-right: 15px;
     &:last-of-type {
@@ -122,8 +122,11 @@ const StyledTechList = styled.ul`
     }
   }
 `;
-const StyledMoreButton = styled(Button)`
+const StyledShowMoreButton = styled.a`
+  ${mixins.bigButton};
   margin: 100px auto 0;
+  text-align: center;
+  display: block;
 `;
 
 const Projects = ({ data }) => {
@@ -216,9 +219,9 @@ const Projects = ({ data }) => {
         </TransitionGroup>
       </StyledGrid>
 
-      <StyledMoreButton onClick={() => setShowMore(!showMore)}>
+      <StyledShowMoreButton as="button" type="button" onClick={() => setShowMore(!showMore)}>
         Show {showMore ? 'Less' : 'More'}
-      </StyledMoreButton>
+      </StyledShowMoreButton>
     </StyledContainer>
   );
 };

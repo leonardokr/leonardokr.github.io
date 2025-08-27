@@ -9,7 +9,7 @@ const { colors } = theme;
 
 const StyledContainer = styled.div`
   ${mixins.flexCenter};
-  background-color: ${colors.darkNavy};
+  background-color: ${colors.light_background};
   position: fixed;
   width: 100%;
   height: 100%;
@@ -21,7 +21,7 @@ const StyledContainer = styled.div`
 `;
 const StyledLogo = styled.div`
   width: max-content;
-  max-width: 100px;
+  max-width: 400px;
   transition: ${theme.transition};
   opacity: ${props => (props.isMounted ? 1 : 0)};
   svg {

@@ -61,25 +61,44 @@ const StyledGitHubInfo = styled.div`
 `;
 
 const Footer = () => {
-  const [githubInfo, setGitHubInfo] = useState({
-    stars: null,
-    forks: null,
-  });
+  const repos = [
+    {
+      user: 'Brittany Chiang',
+      repo: 'bchiang7/v4',
+      year: 'Designed & Built',
+      url: 'https://github.com/bchiang7/v4',
+    },
+    {
+      user: 'Yashita Namdeo',
+      repo: 'yashitanamdeo/yashitanamdeo.github.io',
+      year: 'Forked and revised in 2021',
+      url: 'https://github.com/yashitanamdeo/yashitanamdeo.github.io',
+    },
+    {
+      user: 'Leonardo Klein',
+      repo: 'leonardokr/leonardokr.github.io',
+      year: 'Forked and revised in 2025',
+      url: 'https://github.com/leonardokr/leonardokr.github.io',
+    },
+  ];
+
+  const [githubInfos, setGitHubInfos] = useState(repos.map(() => ({ stars: null, forks: null })));
 
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
       return;
     }
-    fetch('https://api.github.com/repos/bchiang7/v4')
-      .then(response => response.json())
-      .then(json => {
-        const { stargazers_count, forks_count } = json;
-        setGitHubInfo({
-          stars: stargazers_count,
-          forks: forks_count,
-        });
-      })
-      .catch(e => console.error(e));
+    Promise.all(
+      repos.map(r =>
+        fetch(`https://api.github.com/repos/${r.repo}`)
+          .then(response => response.json())
+          .then(json => ({
+            stars: json.stargazers_count,
+            forks: json.forks_count,
+          }))
+          .catch(() => ({ stars: null, forks: null })),
+      ),
+    ).then(setGitHubInfos);
   }, []);
 
   return (
@@ -100,29 +119,26 @@ const Footer = () => {
             ))}
         </StyledSocialList>
       </StyledSocial>
-      <StyledMetadata tabindex="-1">
-        <StyledGitHubLink
-          href="https://github.com/bchiang7/v4"
-          target="_blank"
-          rel="nofollow noopener noreferrer">
-          <div>
-            Designed &amp; Built by Brittany Chiang<br></br>
-            Revised by Yashita Namdeo
+      <StyledMetadata tabIndex="-1">
+        {repos.map((r, i) => (
+          <div key={r.repo} style={{ marginBottom: '4px' }}>
+            <StyledGitHubLink href={r.url} target="_blank" rel="nofollow noopener noreferrer">
+              {r.year} by {r.user}
+            </StyledGitHubLink>
+            {githubInfos[i].stars && githubInfos[i].forks && (
+              <StyledGitHubInfo>
+                <span>
+                  <FormattedIcon name="Star" />
+                  <span>{githubInfos[i].stars.toLocaleString()}</span>
+                </span>
+                <span>
+                  <FormattedIcon name="Fork" />
+                  <span>{githubInfos[i].forks.toLocaleString()}</span>
+                </span>
+              </StyledGitHubInfo>
+            )}
           </div>
-
-          {githubInfo.stars && githubInfo.forks && (
-            <StyledGitHubInfo>
-              <span>
-                <FormattedIcon name="Star" />
-                <span>{githubInfo.stars.toLocaleString()}</span>
-              </span>
-              <span>
-                <FormattedIcon name="Fork" />
-                <span>{githubInfo.forks.toLocaleString()}</span>
-              </span>
-            </StyledGitHubInfo>
-          )}
-        </StyledGitHubLink>
+        ))}
       </StyledMetadata>
     </StyledContainer>
   );

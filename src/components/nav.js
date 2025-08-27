@@ -9,14 +9,14 @@ import { Menu } from '@components';
 import { IconLogo } from '@components/icons';
 import styled from 'styled-components';
 import { theme, mixins, media } from '@styles';
-const { colors, fontSizes, fonts, loaderDelay } = theme;
 
+const { colors, fontSizes, fonts, loaderDelay } = theme;
 const StyledContainer = styled.header`
   ${mixins.flexBetween};
   position: fixed;
   top: 0;
   padding: 0px 50px;
-  background-color: ${colors.navy};
+  background-color: ${colors.light_background};
   transition: ${theme.transition};
   z-index: 11;
   filter: none !important;
@@ -25,7 +25,7 @@ const StyledContainer = styled.header`
   width: 100%;
   height: ${props => (props.scrollDirection === 'none' ? theme.navHeight : theme.navScrollHeight)};
   box-shadow: ${props =>
-    props.scrollDirection === 'up' ? `0 10px 30px -10px ${colors.shadowNavy}` : 'none'};
+    props.scrollDirection === 'up' ? `0 10px 30px -10px ${colors.lightNavy}` : 'none'};
   transform: translateY(
     ${props => (props.scrollDirection === 'down' ? `-${theme.navScrollHeight}` : '0px')}
   );
@@ -36,7 +36,7 @@ const StyledNav = styled.nav`
   ${mixins.flexBetween};
   position: relative;
   width: 100%;
-  color: ${colors.lightestSlate};
+  color: ${colors.background};
   font-family: ${fonts.SFMono};
   counter-reset: item 0;
   z-index: 12;
@@ -45,13 +45,13 @@ const StyledLogo = styled.div`
   ${mixins.flexCenter};
   a {
     display: block;
-    color: ${colors.green};
-    width: 42px;
-    height: 42px;
+    color: ${colors.dark_background};
+    width: 70px;
+    height: 70px;
     &:hover,
     &:focus {
       svg {
-        fill: ${colors.transGreen};
+        fill: ${colors.dark_background};
       }
     }
     svg {
@@ -84,7 +84,7 @@ const StyledHamburgerBox = styled.div`
   height: 24px;
 `;
 const StyledHamburgerInner = styled.div`
-  background-color: ${colors.green};
+  background-color: ${colors.dark_background};
   position: absolute;
   width: ${theme.hamburgerWidth}px;
   height: 2px;
@@ -103,7 +103,7 @@ const StyledHamburgerInner = styled.div`
   &:after {
     content: '';
     display: block;
-    background-color: ${colors.green};
+    background-color: ${colors.dark_background};
     position: absolute;
     left: auto;
     right: 0;
@@ -146,7 +146,7 @@ const StyledListItem = styled.li`
   &:before {
     content: '0' counter(item) '.';
     text-align: right;
-    color: ${colors.green};
+    color: ${colors.accent};
     font-size: ${fontSizes.xs};
   }
 `;
@@ -158,7 +158,6 @@ const StyledResumeButton = styled.a`
   margin-left: 10px;
   font-size: ${fontSizes.smish};
 `;
-
 const DELTA = 5;
 
 class Nav extends Component {
@@ -192,24 +191,14 @@ class Nav extends Component {
   handleScroll = () => {
     const { isMounted, menuOpen, scrollDirection, lastScrollTop } = this.state;
     const fromTop = window.scrollY;
-
-    // Make sure they scroll more than DELTA
-    if (!isMounted || Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {
-      return;
-    }
-
+    if (!isMounted || Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {return;}
     if (fromTop < DELTA) {
       this.setState({ scrollDirection: 'none' });
     } else if (fromTop > lastScrollTop && fromTop > navHeight) {
-      if (scrollDirection !== 'down') {
-        this.setState({ scrollDirection: 'down' });
-      }
+      if (scrollDirection !== 'down') {this.setState({ scrollDirection: 'down' });}
     } else if (fromTop + window.innerHeight < document.body.scrollHeight) {
-      if (scrollDirection !== 'up') {
-        this.setState({ scrollDirection: 'up' });
-      }
+      if (scrollDirection !== 'up') {this.setState({ scrollDirection: 'up' });}
     }
-
     this.setState({ lastScrollTop: fromTop });
   };
 
@@ -220,13 +209,8 @@ class Nav extends Component {
   };
 
   handleKeydown = e => {
-    if (!this.state.menuOpen) {
-      return;
-    }
-
-    if (e.which === 27 || e.key === 'Escape') {
-      this.toggleMenu();
-    }
+    if (!this.state.menuOpen) {return;}
+    if (e.which === 27 || e.key === 'Escape') {this.toggleMenu();}
   };
 
   render() {

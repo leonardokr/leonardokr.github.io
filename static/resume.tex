@@ -1,0 +1,337 @@
+% ============================================================================ %
+%	The MIT License (MIT)
+%   Copyright (c) 2024 Leonardo Klein
+%	Copyright (c) 2019 Jan Küster
+% ============================================================================ %
+
+% GENERAL DOCUMENT DEFINITIONS =============================================== %
+% ============================================================================ %
+\documentclass[10pt,A4]{article}
+\pagestyle{empty}
+
+% Indentation recess
+\setlength{\parindent}{0mm}
+
+% Center icons vertically in the document
+\newcommand{\vcenteredinclude}[1]{\begingroup
+\setbox0=\hbox{\includegraphics{#1}}%
+\parbox{\wd0}{\box0}\endgroup}
+\newcommand*{\vcenteredhbox}[1]{\begingroup
+\setbox0=\hbox{#1}\parbox{\wd0}{\box0}\endgroup}
+
+% Icon
+\newcommand{\icon}[3] { 							
+	\makebox(#2, #2){\textcolor{maincol}{\csname fa#1\endcsname}}
+}	
+% Icon with text
+\newcommand{\icontext}[4]{ 						
+	\vcenteredhbox{\icon{#1}{#2}{#3}}  \hspace{2pt}  \parbox{0.9\mpwidth}{\textcolor{#4}{#3}}
+}
+% Icon with website link
+\newcommand{\iconhref}[5]{ 						
+    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{#4}{\textcolor{#5}{#3}}
+}
+% Icon with email sending link
+\newcommand{\iconemail}[5]{ 						
+    \vcenteredhbox{\icon{#1}{#2}{#5}}  \hspace{2pt} \href{mailto:#4}{\textcolor{#5}{#3}}
+}
+
+% Use columns in the document
+\usepackage{paracol}
+
+% Page style using geometric shapes
+\usepackage[a4paper]{geometry}
+
+% Margins
+\geometry{top=1cm, bottom=1cm, left=1cm, right=1cm}
+
+% Headers and footers
+\usepackage{fancyhdr}
+
+% Table cell alignment
+\usepackage{array}
+
+% Document encoding
+\usepackage[utf8]{inputenc}		
+\usepackage{xstring, xifthen}
+
+% Images in the header
+\usepackage{graphicx}
+
+% Graphics		
+\usepackage{tikz}				
+\usetikzlibrary{shapes, backgrounds,mindmap, trees}
+
+% Right alignment in fixed width column
+\newcolumntype{x}[1]{%
+>{\raggedleft\hspace{0pt}}p{#1}}%
+
+
+% FONTS AND ICONS ============================================================ %
+% ============================================================================ %
+\usepackage{cmbright}
+
+\renewcommand*\familydefault{\sfdefault} 	
+\usepackage{moresize}
+
+\usepackage{fontawesome}
+\usepackage{academicons}
+
+% COLORS ====================================================================== %
+% ============================================================================= % 
+\usepackage{transparent}
+\usepackage{color}
+
+% Primary color
+\definecolor{maincol}{RGB}{ 45, 50, 90 }
+
+% Dark color
+\definecolor{darkcol}{RGB}{ 70, 70, 70 }
+
+% Light color
+\definecolor{lightcol}{RGB}{245,245,245}
+
+% MODEL STRUCTURE ============================================================ %
+% ============================================================================ % 
+% Package to manipulate links
+\usepackage[hidelinks]{hyperref}
+
+% Calculates padding for boxes
+\newcommand{\mpwidth}{\linewidth-\fboxsep-\fboxsep}
+	
+% Lists
+\newcommand{\cvlist}[1] {
+	\begin{itemize}{#1}\end{itemize}
+}
+% Paragraphs
+\newcommand{\cvtext}[1] {
+	\begin{tabular*}{1\mpwidth}{p{0.98\mpwidth}}
+		\parbox{1\mpwidth}{#1}
+	\end{tabular*}
+}
+% Titles with underline in main color
+\newcommand{\cvsection}[1] {
+	\vspace{4pt}
+	\cvtext{
+		\textbf{\LARGE{\textcolor{darkcol}{\uppercase{#1}}}}\\[-4pt]
+		\textcolor{maincol}{ \rule{0.1\textwidth}{2pt} } \\
+	}
+}
+% Progress bar for skills
+\newcommand{\cvskill}[3] {
+	\begin{tabular*}{1\mpwidth}{p{0.72\mpwidth}  r}
+ 		\textcolor{black}{\textbf{#1}} & \textcolor{maincol}{#2}\\
+	\end{tabular*}%
+	
+	\hspace{4pt}
+	\begin{tikzpicture}[scale=1,rounded corners=2pt,very thin]
+		\fill [lightcol] (0,0) rectangle (1\mpwidth, 0.15);
+		\fill [maincol] (0,0) rectangle (#3\mpwidth, 0.15);
+  	\end{tikzpicture}%
+}
+
+% Renders a block of information
+\newcommand{\cvevent}[7] {
+	\parbox{\mpwidth}{
+		\begin{tabular*}{1\mpwidth}{p{0.59\mpwidth}  r}
+	 		\textcolor{black}{\textbf{#2}} & \colorbox{maincol}{\makebox[0.35\mpwidth]{\textcolor{white}{#1}}} \\
+			\textcolor{maincol}{\textbf{#3}} & \\
+		\end{tabular*}\\[4pt]
+	
+		\ifthenelse{\isempty{#4}}{}{
+			\cvtext{#4}\\
+		}
+	}
+
+	\ifthenelse{\isempty{#5}}{}{
+		\vspace{4pt}
+		{#5}
+	}
+	\vspace{4pt}
+}
+
+% Renders a block of information in the left column
+\newcommand{\cvmetaevent}[4] {
+	\textcolor{maincol} {\cvtext{\textbf{\begin{flushleft}#1\end{flushleft}}}}\\[-8pt]
+
+	\ifthenelse{\isempty{#2}}{}{
+	\textcolor{darkcol} {\cvtext{\textbf{#2}} }\\[-8pt]
+	}
+
+	\ifthenelse{\isempty{#3}}{}{
+		\cvtext{{ \textcolor{darkcol} {#3} }}\\[-8pt]
+	}
+
+	\cvtext{#4}\\[4pt]
+}
+
+% Renders QRCode
+% Param 1: width from 0 to 1
+\newcommand{\cvqrcode}[1] {
+	\begin{center}
+		\includegraphics[width={#1}\mpwidth]{qr-code.png}
+	\end{center}
+}
+
+% ============================================================================ %
+% START OF EDITING =========================================================== %
+% ============================================================================ %
+\begin{document}
+\columnratio{0.31}
+\setlength{\columnsep}{2.2em}
+\setlength{\columnseprule}{4pt}
+\colseprulecolor{lightcol}
+\begin{paracol}{2}
+\begin{leftcolumn}
+\vfill\null
+
+% CONTACT ==================================================================== %
+% ============================================================================ %
+\cvsection{CONTACT}
+
+    \icontext{EnvelopeSquare}{14}
+        {\href{mailto:leo@ziondev.us}
+        {leo@ziondev.us}}{black}\\[0pt]
+    \icontext{Github}{14}
+        {\href{https://github.com/leonardokr}
+        {LeonardoKR}}{black}\\[0pt]
+    \icontext{Linkedin}{14}
+        {\href{https://www.linkedin.com/in/leonardokr/}
+        {Leonardo Klein Rezende}}{black}\\[0pt]
+    \icontext{Phone}{14}
+        {66 99917-3947}{black}\\[0pt]
+
+\vfill\null
+
+% CERTIFICATIONS ============================================================= %
+% ============================================================================ %
+\cvsection{CERTIFICATIONS}
+
+    \includegraphics[width=0.4\linewidth]{cert-remote-worker.png}
+    \\[-8pt]
+    \cvmetaevent
+        {RWCP — Remote Worker Professional}
+        {CertiProf}
+        {}
+        {Certificate issued by CertiProf in 2022.}
+        \\[0pt]
+    \includegraphics[width=0.4\linewidth]{cert-scrum.png}
+    \\[-8pt]
+    \cvmetaevent
+        {SFPC - Scrum Foundation Professional Certificate}
+        {CertiProf}
+        {}
+        {Certificate issued by CertiProf in 2020.}
+            \\[0pt]
+        \includegraphics[width=0.4\linewidth]{cert-lifelong-learning.png}
+        \\[-8pt]
+        \cvmetaevent
+            {LLL - Lifelong Learning}
+            {CertiProf}
+            {}
+            {Certificate issued by CertiProf in 2022.}
+
+\vfill\null
+
+% SKILLS ===================================================================== %
+% ============================================================================ %
+\cvsection{SKILLS}
+
+    \cvtext{\textbf{Languages:}\\ Native Brazilian Portuguese, Fluent English}\\[6pt]
+
+    \cvtext{\textbf{Programming/Scripting:}\\ Python, Java, PHP, JavaScript, PowerShell, Bash, Flask, PySide/Qt, HTML, CSS, Bootstrap, Material-UI}\\[6pt]
+
+    \cvtext{\textbf{Experience:}\\ Linux, Windows, Docker, Amazon Web Services, Hyper-V, XCP-ng, Network}\\[6pt]
+
+% Page break for this column
+\newpage
+
+% ============================================================================ %
+\end{leftcolumn}
+\begin{rightcolumn}
+
+% HEADER ===================================================================== %
+% ============================================================================ %
+\fcolorbox{white}{darkcol}{
+    \begin{minipage}[c][2.5cm][c]{1\mpwidth}
+        \begin {center}
+    	  \LARGE{\textbf{\textcolor{white}{\uppercase{
+                % NAME ======================== %
+                Leonardo Klein Rezende
+            }}}} \\[-16pt]
+            
+        	\textcolor{white}{\rule{0.1\textwidth}{1.25pt}} \\[4pt]
+        	\large{\textcolor{white}{
+                % PROFESSION =================== %
+                Information Technology Analyst
+            }}
+        \end {center}
+    \end{minipage}
+} \\[14pt]
+\vspace{0pt}
+
+% EDUCATION ================================================================== %
+% ============================================================================ %
+\cvsection{EDUCATION}
+
+\cvevent
+    {\textbf{2021}}
+	{MBA in Cloud Computing}
+	{Instituto de Gestão e Tecnologia da Informação (IGTI, atualmente XP Educação)}
+    {This postgraduate program aims to contribute to the formation of IT infrastructure managers, addressing concepts and practices of IT infrastructure management with emphasis on the use of cloud-hosted services.}
+\vfill\null
+
+\cvevent
+    {\textbf{2021}}
+	{Information Technology Management}
+	{Universidade Cruzeiro do Sul}
+    {This degree prepares the professional to analyze, implement and document processes; lead teams and manage human and material resources involved, always with the purpose of aligning and integrating IT to business objectives.}
+\vfill\null
+
+\cvevent
+    {\textbf{2019}}
+	{Systems Analysis and Development}
+	{Centro Universitário de Maringá}
+    {This degree aims to train technologists capable of analyzing, designing, documenting, specifying, testing, implementing and maintaining computer information systems.}
+\vfill\null
+
+% EXPERIENCE ================================================================= %
+% ============================================================================ %
+\vfill\null
+\cvsection{EXPERIENCE}
+
+\cvevent
+	{\textbf{Dec. 2023 - Present}}
+	{Senior Technology Analyst | SysAdmin}
+	{Sintel, São Paulo - São Paulo}
+	{\begin{itemize}\setlength{\itemsep}{-4pt}
+            \item Creation and management of Bash, PowerShell and PHP scripts
+            \item Development using Python in a multi-departmentalized team for internal innovation projects
+            \item Creation, execution and monitoring of technology projects
+            \item Management of Windows Server and Rocky Linux servers and services serverless with AWS
+        \end{itemize}}
+\vfill\null
+
+\cvevent
+	{\textbf{Nov. 2015 - Dec. 2023}}
+	{Senior Technology Analyst | SysAdmin}
+	{Grupo Carlos Alberto Polato, Primavera do Leste - Mato Grosso}
+	{\begin{itemize}\setlength{\itemsep}{-4pt}
+            \item Internal software development with Visual DataFlex
+            \item Management and maintenance of SQL Server, queries, and stored procedures
+            \item Management of Windows Server and GNU/Linux Servers in a mixed environment
+            \item Management of network and infrastructure projects, from diagramming and network planning to budget control and project assets
+            \item Management of pfSense and OPNSense firewall, DNS Resolver, DNS Forwarder, DHCP, NTP, VPN with OpenVPN Site-to-Site and Point-to-Site, LDAP integration, Proxy Server
+            \item User support in ERP usage, intermediate/advanced support, intermediation with supplier, organization and monitoring of tasks and delivery deadlines, task distribution to the team, monitoring of user requests, testing and validations
+        \end{itemize}}
+\vfill\null
+
+% hotfixes to create fake-space to ensure the whole height is used
+\vfill
+\vfill
+\vfill
+\end{rightcolumn}
+\end{paracol}
+\end{document}
+% ============================================================================ %
+% END OF DOCUMENT ============================================================ %

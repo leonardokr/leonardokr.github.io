@@ -1,23 +1,41 @@
 import React from 'react';
 
 const IconLogo = () => (
-  <svg id="logo" xmlns="http://www.w3.org/2000/svg" role="img" viewBox="0 0 84 96">
-    <title>Logo</title>
-    <g transform="translate(-8.000000, -2.000000)">
-      <g transform="translate(11.000000, 5.000000)">
-        <polygon
-          id="Shape"
-          stroke="currentColor"
-          strokeWidth="5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          points="39 0 0 22 0 67 39 90 78 68 78 23"
-        />
-      </g>
+  <svg width="100" height="100" viewBox="0 0 100 100">
+    {/* Background layer */}
+    <g id="layer-bg">
+      <rect
+        style={{
+          fill: '#f9f9f9',
+          fillOpacity: 1,
+          stroke: 'none',
+          strokeWidth: 0.173177,
+          strokeOpacity: 1,
+        }}
+        width="100.00"
+        height="100.00"
+        x="0.00"
+        y="0.00"
+        rx="11.05"
+        ry="10.72"
+      />
     </g>
-    <text x="28" y="65" fill="currentColor" fontSize="50px" fontFamily="Consolas, serif">
-      Y
-    </text>
+    {/* K layer */}
+    <g id="layer-k">
+      <path
+        style={{ fill: '#000000', strokeWidth: 0.0307226 }}
+        d="m 76.126046,77.32589 h 1.96416 v 1.450456 l -3.172874,3.807449 3.172874,3.898102 v 1.782854 h -1.782853 l -4.623331,-5.711174 z"
+        transform="matrix(6.8472934,0,0,6.951046,-450.82979,-525.48562)"
+      />
+    </g>
+    {/* L layer */}
+    <g id="layer-l">
+      <path
+        style={{ fill: '#00c1e1', fillOpacity: 1, strokeWidth: 0.0307226 }}
+        d="m 68.384216,77.235236 h 2.749825 v 8.732958 h 2.447648 l 1.813071,2.266339 h -7.040761 z"
+        transform="matrix(6.8472934,0,0,6.951046,-450.82979,-525.48565)"
+      />
+    </g>
   </svg>
 );
 

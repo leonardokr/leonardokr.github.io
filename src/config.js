@@ -1,38 +1,25 @@
 module.exports = {
-  siteTitle: 'Yashita Namdeo',
-  siteDescription:
-    'Yashita Namdeo is an incoming Software Developer, based in India, who loves learning new things and helping tech beginners.',
+  siteTitle: 'Leonardo Klein',
+  siteDescription: 'Leonardo Klein is a Developer, based in Brasil, who loves create new things.',
   siteKeywords:
-    'Yashita Namdeo, Yashita, Namdeo, yashitanamdeo, software engineer, web developer, javascript, python, java, svvv, indore',
-  siteUrl: 'https://yashitanamdeo.github.io/',
+    'Leonardo Klein, Leonardo, Klein, leonardokr, software engineer, developer, python, java, php, aws',
+  siteUrl: 'https://leonardokr.github.io/',
   siteLanguage: 'en_US',
-  googleAnalyticsID: 'UA-45666519-2',
-  googleVerification: 'DCl7VAf9tcz6eD9gb67NfkNnJ1PKRNcg8qQiwpbx9Lk',
-  name: 'Yashita Namdeo',
-  location: 'Indore, India',
-  email: 'yashita.namdeo2000@gmail.com',
-  github: 'https://github.com/yashitanamdeo',
+  googleAnalyticsID: '',
+  googleVerification: '',
+  name: 'Leonardo Klein',
+  location: 'MT, Brasil',
+  email: 'leo@ziondev.us',
+  github: 'https://github.com/leonardokr',
   twitterHandle: '@',
   socialMedia: [
     {
       name: 'GitHub',
-      url: 'https://github.com/yashitanamdeo',
+      url: 'https://github.com/leonardokr',
     },
     {
       name: 'Linkedin',
-      url: 'https://www.linkedin.com/in/yashitanamdeo/',
-    },
-    {
-      name: 'Codepen',
-      url: 'https://codepen.io/yashitanamdeo',
-    },
-    {
-      name: 'Instagram',
-      url: 'https://www.instagram.com/yashitanamdeo',
-    },
-    {
-      name: 'Twitter',
-      url: 'https://twitter.com/',
+      url: 'https://www.linkedin.com/in/leonardokr/',
     },
   ],
 
@@ -56,12 +43,6 @@ module.exports = {
   ],
 
   navHeight: 100,
-
-  colors: {
-    green: '#64ffda',
-    navy: '#0a192f',
-    darkNavy: '#020c1b',
-  },
 
   srConfig: (delay = 200) => ({
     origin: 'bottom',

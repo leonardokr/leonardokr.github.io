@@ -1,4 +1,5 @@
 const config = require('./src/config');
+const colors = require('./src/styles/colors');
 
 module.exports = {
   siteMetadata: {
@@ -20,10 +21,10 @@ module.exports = {
         name: 'Yashita Namdeo',
         short_name: 'Yashita Namdeo',
         start_url: '/',
-        background_color: config.colors.darkNavy,
-        theme_color: config.colors.navy,
+        background_color: colors.dark_background,
+        theme_color: colors.background,
         display: 'minimal-ui',
-        icon: 'src/images/logo.png',
+        icon: 'src/images/lk.png',
       },
     },
     `gatsby-plugin-offline`,
@@ -32,13 +33,6 @@ module.exports = {
       options: {
         name: 'content',
         path: `${__dirname}/content/`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/posts`,
-        name: `posts`,
       },
     },
     {
@@ -67,7 +61,7 @@ module.exports = {
               maxWidth: 700,
               linkImagesToOriginal: true,
               quality: 90,
-              tracedSVG: { color: config.colors.green },
+              tracedSVG: { color: colors.accent },
             },
           },
           {

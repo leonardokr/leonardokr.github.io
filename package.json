@@ -66,13 +66,11 @@
     "@babel/preset-react": "^7.27.1",
     "@upstatement/eslint-config": "3.0.0",
     "@upstatement/prettier-config": "^1.1.0",
-    "babel-eslint": "^10.1.0",
     "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "gatsby-remark-code-titles": "^1.1.0",
-    "gh-pages": "^6.3.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.1.5",
     "prettier": "^3.6.2"

@@ -1,0 +1,8 @@
+# Bypass Jekyll processing
+include:
+  - _headers
+  - _redirects
+
+# Security headers for GitHub Pages
+plugins:
+  - jekyll-redirect-from

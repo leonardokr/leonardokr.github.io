@@ -1,4 +1,4 @@
-const { hex2rgba } = require('@utils');
+const { hex2rgba } = require('../utils');
 
 // Paleta de cores do tema
 const colors = {

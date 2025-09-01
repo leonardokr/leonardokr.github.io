@@ -15,12 +15,11 @@
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
+    "start": "gatsby develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "eslint --ext .js,.jsx src/",
     "lint:fix": "eslint --ext .js,.jsx src/ --fix",
-    "deploy": "gatsby build && gh-pages -d public -b main",
     "prepare": "husky"
   },
   "lint-staged": {

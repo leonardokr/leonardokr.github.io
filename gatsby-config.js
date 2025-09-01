@@ -61,7 +61,6 @@ module.exports = {
               maxWidth: 700,
               linkImagesToOriginal: true,
               quality: 90,
-              tracedSVG: { color: colors.accent },
             },
           },
           {
@@ -133,11 +132,12 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: config.googleAnalyticsID,
-      },
-    },
+    // Comentado temporariamente porque não há trackingId configurado
+    // {
+    //   resolve: `gatsby-plugin-google-analytics`,
+    //   options: {
+    //     trackingId: config.googleAnalyticsID,
+    //   },
+    // },
   ],
 };

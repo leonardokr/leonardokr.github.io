@@ -51,9 +51,12 @@ export const pageQuery = graphql`
             title
             avatar {
               childImageSharp {
-                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#00c1e1" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
+                gatsbyImageData(
+                  width: 700
+                  quality: 90
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP]
+                )
               }
             }
             skills
@@ -89,9 +92,12 @@ export const pageQuery = graphql`
             title
             cover {
               childImageSharp {
-                fluid(maxWidth: 700, quality: 90, traceSVG: { color: "#00c1e1" }) {
-                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
-                }
+                gatsbyImageData(
+                  width: 700
+                  quality: 90
+                  placeholder: BLURRED
+                  formats: [AUTO, WEBP]
+                )
               }
             }
             tech

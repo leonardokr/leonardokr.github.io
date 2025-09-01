@@ -8,3 +8,7 @@ export { default as Section } from './Section';
 export { default as Footer } from './Footer';
 export { default as Heading } from './Heading';
 export { default as InlineLink } from './InlineLink';
+
+// Novos exports para organização
+export * from './constants';
+export * from './commonStyles';

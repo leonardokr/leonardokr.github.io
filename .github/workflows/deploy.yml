@@ -9,7 +9,7 @@ on:
 jobs:
   # Quality and testing job
   quality-check:
-    name: 🔍 Quality Check
+    name: Quality Check
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -32,7 +32,7 @@ jobs:
 
   # Automated deployment job
   deploy:
-    name: 🚀 Deploy to GitHub Pages
+    name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     needs: quality-check
     if: github.ref == 'refs/heads/source' && github.event_name == 'push'
@@ -73,15 +73,15 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
-  # Notification job (optional)
+  # Notification job
   notify:
-    name: 📢 Notify Success
+    name: Notify Success
     runs-on: ubuntu-latest
     needs: deploy
     if: success()
     steps:
       - name: Success Notification
         run: |
-          echo "🎉 Portfolio deployed successfully!"
-          echo "🌐 URL: https://leonardokr.github.io/"
-          echo "📅 Deployed at: $(date)"
+          echo "Portfolio deployed successfully!"
+          echo "URL: https://leonardokr.github.io/"
+          echo "Deployed at: $(date)"

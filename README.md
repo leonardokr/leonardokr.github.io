@@ -156,16 +156,49 @@ Global CDN Distribution
 
 ### **Color Palette**
 
-| Color          | Hex                                                               | Usage                |
-| -------------- | ----------------------------------------------------------------- | -------------------- |
-| Navy           | ![#0a192f](https://dummyimage.com/10/0a192f/0a192f.png) `#0a192f` | Primary Background   |
-| Light Navy     | ![#172a45](https://dummyimage.com/10/172a45/172a45.png) `#172a45` | Secondary Background |
-| Lightest Navy  | ![#303C55](https://dummyimage.com/10/303C55/303C55.png) `#303C55` | Card Background      |
-| Slate          | ![#8892b0](https://dummyimage.com/10/8892b0/8892b0.png) `#8892b0` | Secondary Text       |
-| Light Slate    | ![#a8b2d1](https://dummyimage.com/10/a8b2d1/a8b2d1.png) `#a8b2d1` | Primary Text         |
-| Lightest Slate | ![#ccd6f6](https://dummyimage.com/10/ccd6f6/ccd6f6.png) `#ccd6f6` | Headings             |
-| White          | ![#e6f1ff](https://dummyimage.com/10/e6f1ff/e6f1ff.png) `#e6f1ff` | Bright Text          |
-| Green          | ![#64ffda](https://dummyimage.com/10/64ffda/64ffda.png) `#64ffda` | Accent Color         |
+### Primary Colors
+
+- **`accent`** - Primary brand color used for links, buttons, hover states, and highlights
+- **`darkBackground`** - Dark theme background used in navigation and shadow generation
+- **`background`** - Main application background and theme meta tags
+- **`lightBackground`** - Light theme elements used in loader and navigation components
+
+### Navy Color Palette
+
+- **`lightNavy`** - Card backgrounds, section containers, menu overlays, and job components
+- **`lightestNavy`** - Syntax highlighting, heading backgrounds, and border elements
+
+### Slate Text Hierarchy
+
+- **`slate`** - Primary text color and interactive state indicators
+- **`lightSlate`** - Secondary text for descriptions and supporting content
+- **`lightestSlate`** - Lightest text variant for subtle content and responsive themes
+
+### Utility Colors
+
+- **`white`** - High contrast text for syntax highlighting and responsive breakpoints
+
+### Generated Colors
+
+- **`transparentAccent`** - Semi-transparent accent color for hover effects and overlays
+- **`shadowNavy`** - Semi-transparent dark background for box shadows and depth effects
+
+### Color Reference
+
+| Color            | Hex                                                               |
+| ---------------- | ----------------------------------------------------------------- |
+| Accent           | ![#00c1e1](https://dummyimage.com/10/00c1e1/00c1e1.png) `#00c1e1` |
+| Dark Background  | ![#020c1b](https://dummyimage.com/10/020c1b/020c1b.png) `#020c1b` |
+| Background       | ![#0a192f](https://dummyimage.com/10/0a192f/0a192f.png) `#0a192f` |
+| Light Background | ![#f9f9f9](https://dummyimage.com/10/f9f9f9/f9f9f9.png) `#f9f9f9` |
+| Light Navy       | ![#172a45](https://dummyimage.com/10/172a45/172a45.png) `#172a45` |
+| Lightest Navy    | ![#303C55](https://dummyimage.com/10/303C55/303C55.png) `#303C55` |
+| Slate            | ![#8892b0](https://dummyimage.com/10/8892b0/8892b0.png) `#8892b0` |
+| Light Slate      | ![#a8b2d1](https://dummyimage.com/10/a8b2d1/a8b2d1.png) `#a8b2d1` |
+| Lightest Slate   | ![#ccd6f6](https://dummyimage.com/10/ccd6f6/ccd6f6.png) `#ccd6f6` |
+| White            | ![#e6f1ff](https://dummyimage.com/10/e6f1ff/e6f1ff.png) `#e6f1ff` |
+
+_This color system provides a cohesive visual hierarchy with consistent naming conventions, ensuring maintainable and scalable theming throughout the portfolio._
 
 ---
 
@@ -214,49 +247,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
    ```sh
    npm run deploy
    ```
-
-## 🎨 Color System
-
-### Primary Colors
-
-- **`accent`** - Primary brand color used for links, buttons, hover states, and highlights
-- **`darkBackground`** - Dark theme background used in navigation and shadow generation
-- **`background`** - Main application background and theme meta tags
-- **`lightBackground`** - Light theme elements used in loader and navigation components
-
-### Navy Color Palette
-
-- **`lightNavy`** - Card backgrounds, section containers, menu overlays, and job components
-- **`lightestNavy`** - Syntax highlighting, heading backgrounds, and border elements
-
-### Slate Text Hierarchy
-
-- **`slate`** - Primary text color and interactive state indicators
-- **`lightSlate`** - Secondary text for descriptions and supporting content
-- **`lightestSlate`** - Lightest text variant for subtle content and responsive themes
-
-### Utility Colors
-
-- **`white`** - High contrast text for syntax highlighting and responsive breakpoints
-
-### Generated Colors
-
-- **`transparentAccent`** - Semi-transparent accent color for hover effects and overlays
-- **`shadowNavy`** - Semi-transparent dark background for box shadows and depth effects
-
-### Color Reference
-
-| Color            | Hex                                                               |
-| ---------------- | ----------------------------------------------------------------- |
-| Accent           | ![#00c1e1](https://dummyimage.com/10/00c1e1/00c1e1.png) `#00c1e1` |
-| Dark Background  | ![#020c1b](https://dummyimage.com/10/020c1b/020c1b.png) `#020c1b` |
-| Background       | ![#0a192f](https://dummyimage.com/10/0a192f/0a192f.png) `#0a192f` |
-| Light Background | ![#f9f9f9](https://dummyimage.com/10/f9f9f9/f9f9f9.png) `#f9f9f9` |
-| Light Navy       | ![#172a45](https://dummyimage.com/10/172a45/172a45.png) `#172a45` |
-| Lightest Navy    | ![#303C55](https://dummyimage.com/10/303C55/303C55.png) `#303C55` |
-| Slate            | ![#8892b0](https://dummyimage.com/10/8892b0/8892b0.png) `#8892b0` |
-| Light Slate      | ![#a8b2d1](https://dummyimage.com/10/a8b2d1/a8b2d1.png) `#a8b2d1` |
-| Lightest Slate   | ![#ccd6f6](https://dummyimage.com/10/ccd6f6/ccd6f6.png) `#ccd6f6` |
-| White            | ![#e6f1ff](https://dummyimage.com/10/e6f1ff/e6f1ff.png) `#e6f1ff` |
-
-_This color system provides a cohesive visual hierarchy with consistent naming conventions, ensuring maintainable and scalable theming throughout the portfolio._

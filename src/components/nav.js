@@ -15,7 +15,7 @@ const StyledContainer = styled.header`
   position: fixed;
   top: 0;
   padding: 0px 50px;
-  background-color: ${colors.light_background};
+  background-color: ${colors.lightBackground};
   transition: ${theme.transition};
   z-index: 11;
   filter: none !important;
@@ -44,13 +44,13 @@ const StyledLogo = styled.div`
   ${mixins.flexCenter};
   a {
     display: block;
-    color: ${colors.dark_background};
+    color: ${colors.darkBackground};
     width: 70px;
     height: 70px;
     &:hover,
     &:focus {
       svg {
-        fill: ${colors.dark_background};
+        fill: ${colors.darkBackground};
       }
     }
     svg {
@@ -83,7 +83,7 @@ const StyledHamburgerBox = styled.div`
   height: 24px;
 `;
 const StyledHamburgerInner = styled.div`
-  background-color: ${colors.dark_background};
+  background-color: ${colors.darkBackground};
   position: absolute;
   width: ${theme.hamburgerWidth}px;
   height: 2px;
@@ -102,7 +102,7 @@ const StyledHamburgerInner = styled.div`
   &:after {
     content: '';
     display: block;
-    background-color: ${colors.dark_background};
+    background-color: ${colors.darkBackground};
     position: absolute;
     left: auto;
     right: 0;

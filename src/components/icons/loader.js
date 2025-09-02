@@ -1,4 +1,7 @@
 import React from 'react';
+import theme from '@styles/theme';
+
+const { colors } = theme;
 
 const IconLoader = () => (
   <svg width="400" height="400" viewBox="0 0 100 100">
@@ -32,7 +35,7 @@ const IconLoader = () => (
     <g id="layer-bg" transform="translate(0.00,0.00)">
       <rect
         style={{
-          fill: '#f9f9f9',
+          fill: colors.lightBackground,
           fillOpacity: 1,
           stroke: 'none',
           strokeWidth: 0.173177,

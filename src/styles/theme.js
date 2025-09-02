@@ -2,9 +2,9 @@ const { hex2rgba } = require('../utils');
 
 const colors = {
   accent: '#00c1e1',
-  dark_background: '#020c1b',
+  darkBackground: '#020c1b',
   background: '#0a192f',
-  light_background: '#f9f9f9',
+  lightBackground: '#f9f9f9',
   lightNavy: '#172a45',
   lightestNavy: '#303C55',
   slate: '#8892b0',
@@ -17,7 +17,7 @@ const theme = {
   colors: {
     ...colors,
     transparent_accent: hex2rgba(colors.accent, 0.07),
-    shadowNavy: hex2rgba(colors.dark_background, 0.7),
+    shadowNavy: hex2rgba(colors.darkBackground, 0.7),
   },
 
   fonts: {

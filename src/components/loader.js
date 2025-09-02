@@ -83,8 +83,6 @@ const Loader = ({ finishLoading }) => {
 
   return (
     <StyledContainer className="loader">
-      {/* TODO: Migrate body class management to Gatsby Head API */}
-
       <StyledLogo isMounted={isMounted}>
         <IconLoader />
       </StyledLogo>

@@ -10,6 +10,7 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-styled-components`,
+    `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
@@ -17,10 +18,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Yashita Namdeo',
-        short_name: 'Yashita Namdeo',
+        name: 'Leonardo Klein',
+        short_name: 'Leonardo Klein',
         start_url: '/',
-        background_color: colors.dark_background,
+        background_color: colors.darkBackground,
         theme_color: colors.background,
         display: 'minimal-ui',
         icon: 'src/images/lk.png',

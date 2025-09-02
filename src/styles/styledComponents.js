@@ -2,7 +2,6 @@ import styled from 'styled-components';
 import { fontSizes } from './constants';
 import { baseButton, iconLink, techList } from './commonStyles';
 
-// Componentes base reutilizáveis
 export const StyledButton = styled.button`
   ${baseButton};
   padding: 0.75rem 1rem;

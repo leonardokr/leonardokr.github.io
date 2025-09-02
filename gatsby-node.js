@@ -5,14 +5,22 @@
  */
 
 const path = require('path');
+const fs = require('fs');
+
+exports.onPreBuild = () => {
+  const srcPath = path.join(__dirname, 'src', 'images', 'og_background.png');
+  const destPath = path.join(__dirname, 'static', 'og_background.png');
+
+  if (fs.existsSync(srcPath)) {
+    fs.copyFileSync(srcPath, destPath);
+  }
+};
 
 exports.createPages = async () => {
   // No dynamic pages
 };
 
-// https://www.gatsbyjs.org/docs/node-apis/#onCreateWebpackConfig
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  // https://www.gatsbyjs.org/docs/debugging-html-builds/#fixing-third-party-modules
   if (stage === 'build-html') {
     actions.setWebpackConfig({
       module: {

@@ -4,7 +4,6 @@ import config from '@config';
 import theme from '@styles/theme';
 import lk from '@images/lk.png';
 import favicon from '@images/favicon.ico';
-import ogImage from '@images/og.png';
 
 const Head = ({ metadata }) => (
   <>
@@ -23,14 +22,14 @@ const Head = ({ metadata }) => (
     <meta property="og:type" content="website" />
     <meta property="og:url" content={metadata.siteUrl} />
     <meta property="og:site_name" content={metadata.title} />
-    <meta property="og:image" content={`${config.siteUrl}${ogImage}`} />
+    <meta property="og:image" content={`${config.siteUrl}og_background.png`} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:locale" content={config.siteLanguage} />
     <meta itemProp="name" content={metadata.title} />
     <meta itemProp="description" content={metadata.description} />
-    <meta itemProp="image" content={`${config.siteUrl}${ogImage}`} />
+    <meta itemProp="image" content={`${config.siteUrl}og_background.png`} />
     <meta name="msapplication-TileColor" content={theme.colors.background} />
     <meta name="msapplication-TileImage" content={lk} />
     <meta name="theme-color" content={theme.colors.background} />

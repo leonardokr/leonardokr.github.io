@@ -1,6 +1,5 @@
 const { hex2rgba } = require('../utils');
 
-// Paleta de cores do tema
 const colors = {
   accent: '#00c1e1',
   dark_background: '#020c1b',

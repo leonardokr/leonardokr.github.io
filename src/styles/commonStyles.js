@@ -2,7 +2,6 @@ import { css } from 'styled-components';
 import theme from './theme';
 const { colors, fontSizes, fonts } = theme;
 
-// Componentes base reutilizáveis
 export const baseBox = css`
   box-shadow: 0 10px 30px -15px ${colors.shadowNavy};
   transition: ${theme.transition};

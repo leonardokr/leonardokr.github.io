@@ -194,17 +194,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Customizations & DevOps**: Extensively modified and enhanced with modern CI/CD practices, performance optimizations, and personal branding
 
 > This portfolio demonstrates professional development practices including automated testing, deployment pipelines, and modern web technologies while building upon excellent open-source foundations.
-> npm start
-
-````
 
 ## Building and Running for Production
 
 1. Generate a full static production build
 
-```sh
-npm run build
-````
+   ```sh
+   npm run build
+   ```
 
 2. Preview the site as it will appear once deployed
 

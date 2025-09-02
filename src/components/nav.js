@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'gatsby';
-import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { throttle } from '@utils';
@@ -191,13 +190,19 @@ class Nav extends Component {
   handleScroll = () => {
     const { isMounted, menuOpen, scrollDirection, lastScrollTop } = this.state;
     const fromTop = window.scrollY;
-    if (!isMounted || Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {return;}
+    if (!isMounted || Math.abs(lastScrollTop - fromTop) <= DELTA || menuOpen) {
+      return;
+    }
     if (fromTop < DELTA) {
       this.setState({ scrollDirection: 'none' });
     } else if (fromTop > lastScrollTop && fromTop > navHeight) {
-      if (scrollDirection !== 'down') {this.setState({ scrollDirection: 'down' });}
+      if (scrollDirection !== 'down') {
+        this.setState({ scrollDirection: 'down' });
+      }
     } else if (fromTop + window.innerHeight < document.body.scrollHeight) {
-      if (scrollDirection !== 'up') {this.setState({ scrollDirection: 'up' });}
+      if (scrollDirection !== 'up') {
+        this.setState({ scrollDirection: 'up' });
+      }
     }
     this.setState({ lastScrollTop: fromTop });
   };
@@ -209,8 +214,12 @@ class Nav extends Component {
   };
 
   handleKeydown = e => {
-    if (!this.state.menuOpen) {return;}
-    if (e.which === 27 || e.key === 'Escape') {this.toggleMenu();}
+    if (!this.state.menuOpen) {
+      return;
+    }
+    if (e.which === 27 || e.key === 'Escape') {
+      this.toggleMenu();
+    }
   };
 
   render() {
@@ -222,9 +231,7 @@ class Nav extends Component {
 
     return (
       <StyledContainer scrollDirection={scrollDirection}>
-        <Helmet>
-          <body className={menuOpen ? 'blur' : ''} />
-        </Helmet>
+        {/* TODO: Implement body blur effect via CSS instead of Helmet */}
         <StyledNav>
           <TransitionGroup component={null}>
             {isMounted && (

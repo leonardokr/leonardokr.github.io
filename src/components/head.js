@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
 import config from '@config';
 import theme from '@styles/theme';
 import lk from '@images/lk.png';
@@ -8,8 +7,8 @@ import favicon from '@images/favicon.ico';
 import ogImage from '@images/og.png';
 
 const Head = ({ metadata }) => (
-  <Helmet>
-    <html lang="en" prefix="og: http://ogp.me/ns#" />
+  <>
+    <html lang="en" />
     <title itemProp="name" lang="en">
       {metadata.title}
     </title>
@@ -35,7 +34,7 @@ const Head = ({ metadata }) => (
     <meta name="msapplication-TileColor" content={theme.colors.background} />
     <meta name="msapplication-TileImage" content={lk} />
     <meta name="theme-color" content={theme.colors.background} />
-  </Helmet>
+  </>
 );
 
 export default Head;

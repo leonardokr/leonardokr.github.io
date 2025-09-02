@@ -1,6 +1,5 @@
 import React, { useRef, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import { Helmet } from 'react-helmet';
 import PropTypes from 'prop-types';
 import sr from '@utils/sr';
 import { srConfig } from '@config';
@@ -77,17 +76,9 @@ const StyledTable = styled.table`
     }
     &.links {
       span {
-        display: flex;
-        align-items: center;
+        ${mixins.flexBetween};
         a {
           ${mixins.flexCenter};
-        }
-        a + a {
-          margin-left: 10px;
-        }
-        svg {
-          width: 20px;
-          height: 20px;
         }
       }
     }
@@ -95,11 +86,11 @@ const StyledTable = styled.table`
 `;
 
 const ArchivePage = ({ location, data }) => {
+  const revealTitle = useRef();
+  const revealTable = useRef();
+  const revealProjects = useRef([]);
   const projects = data.allMarkdownRemark.edges;
 
-  const revealTitle = useRef(null);
-  const revealTable = useRef(null);
-  const revealProjects = useRef([]);
   useEffect(() => {
     sr.reveal(revealTitle.current, srConfig());
     sr.reveal(revealTable.current, srConfig());
@@ -108,15 +99,10 @@ const ArchivePage = ({ location, data }) => {
 
   return (
     <Layout location={location}>
-      <Helmet>
-        <title>Archive | Leonardo Klein</title>
-        <link rel="canonical" href="https://leonardokr.github.io/archive" />
-      </Helmet>
-
       <StyledMainContainer>
         <header ref={revealTitle}>
           <h1 className="big-title">Archive</h1>
-          <p className="subtitle">A list of things I’ve worked on</p>
+          <p className="subtitle">A list of things I've worked on</p>
         </header>
 
         <StyledTableContainer ref={revealTable}>
@@ -158,20 +144,12 @@ const ArchivePage = ({ location, data }) => {
                       <td className="links">
                         <span>
                           {external && (
-                            <a
-                              href={external}
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                              aria-label="External Link">
+                            <a href={external} aria-label="External Link">
                               <FormattedIcon name="External" />
                             </a>
                           )}
                           {github && (
-                            <a
-                              href={github}
-                              target="_blank"
-                              rel="nofollow noopener noreferrer"
-                              aria-label="GitHub Link">
+                            <a href={github} aria-label="GitHub Link">
                               <FormattedIcon name="GitHub" />
                             </a>
                           )}
@@ -194,11 +172,18 @@ ArchivePage.propTypes = {
 
 export default ArchivePage;
 
+export const Head = () => (
+  <>
+    <title>Archive | Leonardo Klein</title>
+    <link rel="canonical" href="https://leonardokr.github.io/archive" />
+  </>
+);
+
 export const pageQuery = graphql`
   {
     allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/projects/" } }
-      sort: { fields: [frontmatter___date], order: DESC }
+      sort: { frontmatter: { date: DESC } }
     ) {
       edges {
         node {

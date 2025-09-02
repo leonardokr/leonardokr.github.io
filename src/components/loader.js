@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import anime from 'animejs';
 import { IconLoader } from '@components/icons';
@@ -84,7 +83,7 @@ const Loader = ({ finishLoading }) => {
 
   return (
     <StyledContainer className="loader">
-      <Helmet bodyAttributes={{ class: `hidden` }} />
+      {/* TODO: Migrate body class management to Gatsby Head API */}
 
       <StyledLogo isMounted={isMounted}>
         <IconLoader />

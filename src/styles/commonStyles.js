@@ -26,7 +26,7 @@ export const baseButton = css`
   &:hover,
   &:focus,
   &:active {
-    background-color: ${colors.transparent_accent};
+    background-color: ${colors.transparentAccent};
   }
 
   &:after {

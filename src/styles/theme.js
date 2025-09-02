@@ -16,7 +16,7 @@ const colors = {
 const theme = {
   colors: {
     ...colors,
-    transparent_accent: hex2rgba(colors.accent, 0.07),
+    transparentAccent: hex2rgba(colors.accent, 0.07),
     shadowNavy: hex2rgba(colors.darkBackground, 0.7),
   },
 

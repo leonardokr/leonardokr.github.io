@@ -215,6 +215,7 @@ const Featured = ({ data }) => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover } = frontmatter;
             const projectKey = external || github || title;
+            const imageData = getImage(cover);
 
             return (
               <StyledProject key={projectKey} ref={el => (revealProjects.current[i] = el)}>
@@ -267,7 +268,7 @@ const Featured = ({ data }) => {
                   href={external ? external : github ? github : '#'}
                   target="_blank"
                   rel="nofollow noopener noreferrer">
-                  <StyledFeaturedImg image={getImage(cover)} alt={title} />
+                  {imageData && <StyledFeaturedImg image={imageData} alt={title} />}
                 </StyledImgContainer>
               </StyledProject>
             );

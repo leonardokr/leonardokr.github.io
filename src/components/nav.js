@@ -167,22 +167,28 @@ class Nav extends Component {
     lastScrollTop: 0,
   };
 
+  scrollListener = throttle(this.handleScroll);
+
+  resizeListener = throttle(this.handleResize);
+
+  keydownListener = this.handleKeydown;
+
   componentDidMount() {
     setTimeout(
       () =>
         this.setState({ isMounted: true }, () => {
-          window.addEventListener('scroll', () => throttle(this.handleScroll()));
-          window.addEventListener('resize', () => throttle(this.handleResize()));
-          window.addEventListener('keydown', e => this.handleKeydown(e));
+          window.addEventListener('scroll', this.scrollListener);
+          window.addEventListener('resize', this.resizeListener);
+          window.addEventListener('keydown', this.keydownListener);
         }),
       100,
     );
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', () => this.handleScroll());
-    window.removeEventListener('resize', () => this.handleResize());
-    window.removeEventListener('keydown', e => this.handleKeydown(e));
+    window.removeEventListener('scroll', this.scrollListener);
+    window.removeEventListener('resize', this.resizeListener);
+    window.removeEventListener('keydown', this.keydownListener);
   }
 
   toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen });
@@ -231,12 +237,11 @@ class Nav extends Component {
 
     return (
       <StyledContainer scrollDirection={scrollDirection}>
-        {/* TODO: Implement body blur effect via CSS instead of Helmet */}
         <StyledNav>
           <TransitionGroup component={null}>
             {isMounted && (
               <CSSTransition classNames={fadeClass} timeout={timeout}>
-                <StyledLogo tabindex="-1">
+                <StyledLogo tabIndex={-1}>
                   {isHome ? (
                     <a href="/" aria-label="home">
                       <IconLogo />
@@ -269,9 +274,8 @@ class Nav extends Component {
                 {isMounted &&
                   navLinks &&
                   navLinks.map(({ url, name }, i) => (
-                    <CSSTransition key={i} classNames={fadeDownClass} timeout={timeout}>
+                    <CSSTransition key={url} classNames={fadeDownClass} timeout={timeout}>
                       <StyledListItem
-                        key={i}
                         style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
                         <StyledListLink to={url}>{name}</StyledListLink>
                       </StyledListItem>

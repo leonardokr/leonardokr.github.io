@@ -83,10 +83,10 @@ const ResumeLink = styled.a`
 const Menu = ({ menuOpen, toggleMenu }) => {
   const handleMenuClick = e => {
     const target = e.target;
-    const isLink = target.hasAttribute('href');
-    const isNotMenu = target.classList && target.classList[0].includes('StyledContainer');
+    const isLink = Boolean(target.closest('a'));
+    const isBackdropClick = target === e.currentTarget;
 
-    if (isLink || isNotMenu) {
+    if (isLink || isBackdropClick) {
       toggleMenu();
     }
   };
@@ -96,13 +96,13 @@ const Menu = ({ menuOpen, toggleMenu }) => {
       menuOpen={menuOpen}
       onClick={handleMenuClick}
       aria-hidden={!menuOpen}
-      tabIndex={menuOpen ? 1 : -1}>
+      tabIndex={menuOpen ? 0 : -1}>
       <Sidebar>
         <NavLinks>
           <NavList>
             {navLinks &&
-              navLinks.map(({ url, name }, i) => (
-                <NavListItem key={i}>
+              navLinks.map(({ url, name }) => (
+                <NavListItem key={url}>
                   <NavLink to={url}>{name}</NavLink>
                 </NavListItem>
               ))}

@@ -65,7 +65,7 @@ const Layout = ({ children, location }) => {
         }
       }, 0);
     }
-  }, [isLoading]);
+  }, [isLoading, location.hash]);
 
   return (
     <StaticQuery

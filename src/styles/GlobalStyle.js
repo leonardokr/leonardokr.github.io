@@ -132,7 +132,7 @@ const GlobalStyle = createGlobalStyle`
 
     &:focus,
     &:active {
-      outline-color: ${colors.lightblue};
+      outline-color: ${colors.accent};
     }
   }
 

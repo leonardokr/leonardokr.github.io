@@ -169,16 +169,19 @@ class Nav extends Component {
     lastScrollTop: 0,
   };
 
-  scrollListener = throttle(this.handleScroll);
+  scrollListener = null;
 
-  resizeListener = throttle(this.handleResize);
+  resizeListener = null;
 
-  keydownListener = this.handleKeydown;
+  keydownListener = null;
 
   componentDidMount() {
     setTimeout(
       () =>
         this.setState({ isMounted: true }, () => {
+          this.scrollListener = throttle(this.handleScroll);
+          this.resizeListener = throttle(this.handleResize);
+          this.keydownListener = this.handleKeydown;
           window.addEventListener('scroll', this.scrollListener);
           window.addEventListener('resize', this.resizeListener);
           window.addEventListener('keydown', this.keydownListener);
@@ -188,9 +191,15 @@ class Nav extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.scrollListener);
-    window.removeEventListener('resize', this.resizeListener);
-    window.removeEventListener('keydown', this.keydownListener);
+    if (this.scrollListener) {
+      window.removeEventListener('scroll', this.scrollListener);
+    }
+    if (this.resizeListener) {
+      window.removeEventListener('resize', this.resizeListener);
+    }
+    if (this.keydownListener) {
+      window.removeEventListener('keydown', this.keydownListener);
+    }
   }
 
   toggleMenu = () => this.setState({ menuOpen: !this.state.menuOpen });

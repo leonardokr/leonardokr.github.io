@@ -223,7 +223,7 @@ class Nav extends Component {
     if (!this.state.menuOpen) {
       return;
     }
-    if (e.which === 27 || e.key === 'Escape') {
+    if (e.key === 'Escape') {
       this.toggleMenu();
     }
   };

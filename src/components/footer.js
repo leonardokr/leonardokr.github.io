@@ -1,10 +1,30 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { FormattedIcon } from '@components/icons';
 import { socialMedia } from '@config';
 import styled from 'styled-components';
 import { theme, mixins, media } from '@styles';
 const { colors, fontSizes, fonts } = theme;
+
+const REPOSITORY_CREDITS = [
+  {
+    user: 'Brittany Chiang',
+    repo: 'bchiang7/v4',
+    year: 'Designed & Built',
+    url: 'https://github.com/bchiang7/v4',
+  },
+  {
+    user: 'Yashita Namdeo',
+    repo: 'yashitanamdeo/yashitanamdeo.github.io',
+    year: 'Forked and revised in 2021',
+    url: 'https://github.com/yashitanamdeo/yashitanamdeo.github.io',
+  },
+  {
+    user: 'Leonardo Klein',
+    repo: 'leonardokr/leonardokr.github.io',
+    year: 'Forked and revised in 2025',
+    url: 'https://github.com/leonardokr/leonardokr.github.io',
+  },
+];
 
 const StyledContainer = styled.footer`
   ${mixins.flexCenter};
@@ -59,37 +79,21 @@ const StyledGitHubInfo = styled.div`
     margin-right: 5px;
   }
 `;
+const StyledCreditItem = styled.div`
+  margin-bottom: 4px;
+`;
 
 const Footer = () => {
-  const repos = [
-    {
-      user: 'Brittany Chiang',
-      repo: 'bchiang7/v4',
-      year: 'Designed & Built',
-      url: 'https://github.com/bchiang7/v4',
-    },
-    {
-      user: 'Yashita Namdeo',
-      repo: 'yashitanamdeo/yashitanamdeo.github.io',
-      year: 'Forked and revised in 2021',
-      url: 'https://github.com/yashitanamdeo/yashitanamdeo.github.io',
-    },
-    {
-      user: 'Leonardo Klein',
-      repo: 'leonardokr/leonardokr.github.io',
-      year: 'Forked and revised in 2025',
-      url: 'https://github.com/leonardokr/leonardokr.github.io',
-    },
-  ];
-
-  const [githubInfos, setGitHubInfos] = useState(repos.map(() => ({ stars: null, forks: null })));
+  const [githubInfos, setGitHubInfos] = useState(
+    REPOSITORY_CREDITS.map(() => ({ stars: null, forks: null })),
+  );
 
   useEffect(() => {
     if (process.env.NODE_ENV !== 'production') {
       return;
     }
     Promise.all(
-      repos.map(r =>
+      REPOSITORY_CREDITS.map(r =>
         fetch(`https://api.github.com/repos/${r.repo}`)
           .then(response => response.json())
           .then(json => ({
@@ -106,8 +110,8 @@ const Footer = () => {
       <StyledSocial>
         <StyledSocialList>
           {socialMedia &&
-            socialMedia.map(({ name, url }, i) => (
-              <li key={i}>
+            socialMedia.map(({ name, url }) => (
+              <li key={url}>
                 <StyledSocialLink
                   href={url}
                   target="_blank"
@@ -120,12 +124,12 @@ const Footer = () => {
         </StyledSocialList>
       </StyledSocial>
       <StyledMetadata tabIndex="-1">
-        {repos.map((r, i) => (
-          <div key={r.repo} style={{ marginBottom: '4px' }}>
+        {REPOSITORY_CREDITS.map((r, i) => (
+          <StyledCreditItem key={r.repo}>
             <StyledGitHubLink href={r.url} target="_blank" rel="nofollow noopener noreferrer">
               {r.year} by {r.user}
             </StyledGitHubLink>
-            {githubInfos[i].stars && githubInfos[i].forks && (
+            {githubInfos[i].stars !== null && githubInfos[i].forks !== null && (
               <StyledGitHubInfo>
                 <span>
                   <FormattedIcon name="Star" />
@@ -137,15 +141,11 @@ const Footer = () => {
                 </span>
               </StyledGitHubInfo>
             )}
-          </div>
+          </StyledCreditItem>
         ))}
       </StyledMetadata>
     </StyledContainer>
   );
-};
-
-Footer.propTypes = {
-  githubInfo: PropTypes.object,
 };
 
 export default Footer;

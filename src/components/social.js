@@ -4,7 +4,7 @@ import { socialMedia } from '@config';
 import { Side } from '@components';
 import { FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
-import { theme } from '@styles';
+import { theme, iconLink } from '@styles';
 const { colors } = theme;
 
 const StyledList = styled.ul`
@@ -29,11 +29,7 @@ const StyledList = styled.ul`
   }
 `;
 const StyledLink = styled.a`
-  padding: 10px;
-  &:hover,
-  &:focus {
-    transform: translateY(-3px);
-  }
+  ${iconLink};
   svg {
     width: 25px;
     height: 25px;
@@ -44,8 +40,8 @@ const Social = ({ isHome }) => (
   <Side isHome={isHome} orientation="left">
     <StyledList>
       {socialMedia &&
-        socialMedia.map(({ url, name }, i) => (
-          <li key={i}>
+        socialMedia.map(({ url, name }) => (
+          <li key={url}>
             <StyledLink
               href={url}
               target="_blank"

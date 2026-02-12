@@ -6,7 +6,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
-import { theme, mixins, media, Section } from '@styles';
+import { theme, mixins, media, Section, projectCard, iconLink, techList } from '@styles';
 const { colors, fontSizes, fonts } = theme;
 
 const StyledContainer = styled(Section)`
@@ -44,16 +44,13 @@ const StyledGrid = styled.div`
   }
 `;
 const StyledProjectInner = styled.div`
-  ${mixins.boxShadow};
+  ${projectCard};
   ${mixins.flexBetween};
   flex-direction: column;
   align-items: flex-start;
   position: relative;
   padding: 2rem 1.75rem;
   height: 100%;
-  border-radius: ${theme.borderRadius};
-  transition: ${theme.transition};
-  background-color: ${colors.lightNavy};
 `;
 const StyledProject = styled.div`
   transition: ${theme.transition};
@@ -61,9 +58,6 @@ const StyledProject = styled.div`
   &:hover,
   &:focus {
     outline: 0;
-    ${StyledProjectInner} {
-      transform: translateY(-5px);
-    }
   }
 `;
 const StyledProjectHeader = styled.div`
@@ -82,13 +76,9 @@ const StyledProjectLinks = styled.div`
   color: ${colors.lightSlate};
 `;
 const StyledIconLink = styled.a`
+  ${iconLink};
   position: relative;
   top: -10px;
-  padding: 10px;
-  svg {
-    width: 20px;
-    height: 20px;
-  }
 `;
 const StyledProjectName = styled.h5`
   margin: 0 0 10px;
@@ -103,24 +93,7 @@ const StyledProjectDescription = styled.div`
   }
 `;
 const StyledTechList = styled.ul`
-  display: flex;
-  align-items: flex-end;
-  flex-grow: 1;
-  flex-wrap: wrap;
-  padding: 0;
-  margin: 20px 0 0 0;
-  list-style: none;
-
-  li {
-    font-family: ${fonts.SFMono};
-    font-size: ${fontSizes.xs};
-    color: ${colors.accent};
-    line-height: 1.75;
-    margin-right: 15px;
-    &:last-of-type {
-      margin-right: 0;
-    }
-  }
+  ${techList};
 `;
 const StyledShowMoreButton = styled.a`
   ${mixins.bigButton};
@@ -143,8 +116,8 @@ const Projects = ({ data }) => {
 
   const GRID_LIMIT = 9;
   const projects = data.filter(({ node }) => node);
-  const firstSix = projects.slice(0, GRID_LIMIT);
-  const projectsToShow = showMore ? projects : firstSix;
+  const initialProjects = projects.slice(0, GRID_LIMIT);
+  const projectsToShow = showMore ? projects : initialProjects;
 
   return (
     <StyledContainer>
@@ -159,16 +132,16 @@ const Projects = ({ data }) => {
             projectsToShow.map(({ node }, i) => {
               const { frontmatter, html } = node;
               const { github, external, title, tech } = frontmatter;
+              const projectKey = external || github || title;
               return (
                 <CSSTransition
-                  key={i}
+                  key={projectKey}
                   classNames="fadeup"
                   timeout={i >= GRID_LIMIT ? (i - GRID_LIMIT) * 300 : 300}
                   exit={false}>
                   <StyledProject
-                    key={i}
                     ref={el => (revealProjects.current[i] = el)}
-                    tabIndex="0"
+                    tabIndex={0}
                     style={{
                       transitionDelay: `${i >= GRID_LIMIT ? (i - GRID_LIMIT) * 100 : 0}ms`,
                     }}>
@@ -205,8 +178,8 @@ const Projects = ({ data }) => {
                       <footer>
                         {tech && (
                           <StyledTechList>
-                            {tech.map((tech, i) => (
-                              <li key={i}>{tech}</li>
+                            {tech.map(item => (
+                              <li key={`${projectKey}-${item}`}>{item}</li>
                             ))}
                           </StyledTechList>
                         )}

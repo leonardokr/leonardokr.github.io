@@ -5,7 +5,7 @@ import sr from '@utils/sr';
 import { srConfig } from '@config';
 import { FormattedIcon } from '@components/icons';
 import styled from 'styled-components';
-import { theme, mixins, media, Section, Heading } from '@styles';
+import { theme, mixins, media, Section, Heading, techList, iconLink } from '@styles';
 const { colors, fontSizes, fonts } = theme;
 
 const StyledContainer = styled(Section)`
@@ -67,26 +67,17 @@ const StyledDescription = styled.div`
   }
 `;
 const StyledTechList = styled.ul`
+  ${techList};
   position: relative;
   z-index: 2;
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
   margin: 25px 0 10px;
-  list-style: none;
 
   li {
-    font-family: ${fonts.SFMono};
     font-size: ${fontSizes.smish};
-    color: ${colors.accent};
     margin-right: ${theme.margin};
     margin-bottom: 7px;
     white-space: nowrap;
-    &:last-of-type {
-      margin-right: 0;
-    }
     ${media.thone`
-      color: ${colors.accent};
       margin-right: 10px;
     `};
   }
@@ -99,7 +90,7 @@ const StyledLinkWrapper = styled.div`
   margin-left: -10px;
   color: ${colors.lightestSlate};
   a {
-    padding: 10px;
+    ${iconLink};
     svg {
       width: 22px;
       height: 22px;
@@ -223,9 +214,10 @@ const Featured = ({ data }) => {
           featuredProjects.map(({ node }, i) => {
             const { frontmatter, html } = node;
             const { external, title, tech, github, cover } = frontmatter;
+            const projectKey = external || github || title;
 
             return (
-              <StyledProject key={i} ref={el => (revealProjects.current[i] = el)}>
+              <StyledProject key={projectKey} ref={el => (revealProjects.current[i] = el)}>
                 <StyledContent>
                   <StyledLabel>Featured Project</StyledLabel>
                   <StyledProjectName>
@@ -244,8 +236,8 @@ const Featured = ({ data }) => {
                   <StyledDescription dangerouslySetInnerHTML={{ __html: html }} />
                   {tech && (
                     <StyledTechList>
-                      {tech.map((tech, i) => (
-                        <li key={i}>{tech}</li>
+                      {tech.map(item => (
+                        <li key={`${projectKey}-${item}`}>{item}</li>
                       ))}
                     </StyledTechList>
                   )}

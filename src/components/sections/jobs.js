@@ -166,28 +166,23 @@ const Jobs = ({ data }) => {
     if (tabs.current[tabFocus]) {
       tabs.current[tabFocus].focus();
     } else {
-      // If we're at the end, go to the start
       if (tabFocus >= tabs.current.length) {
         setTabFocus(0);
       }
-      // If we're at the start, move to the end
       if (tabFocus < 0) {
         setTabFocus(tabs.current.length - 1);
       }
     }
   };
 
-  // Only re-run the effect if tabFocus changes
   useEffect(() => focusTab(), [tabFocus]);
 
   const onKeyPressed = e => {
-    if (e.keyCode === 38 || e.keyCode === 40) {
+    if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
       e.preventDefault();
-      if (e.keyCode === 40) {
-        // Move down
+      if (e.key === 'ArrowDown') {
         setTabFocus(tabFocus + 1);
-      } else if (e.keyCode === 38) {
-        // Move up
+      } else if (e.key === 'ArrowUp') {
         setTabFocus(tabFocus - 1);
       }
     }
@@ -209,9 +204,9 @@ const Jobs = ({ data }) => {
                     ref={el => (tabs.current[i] = el)}
                     id={`tab-${i}`}
                     role="tab"
-                    aria-selected={activeTabId === i ? true : false}
+                    aria-selected={activeTabId === i}
                     aria-controls={`panel-${i}`}
-                    tabIndex={activeTabId === i ? '0' : '-1'}>
+                    tabIndex={activeTabId === i ? 0 : -1}>
                     <span>{company}</span>
                   </StyledTabButton>
                 </li>
@@ -231,7 +226,7 @@ const Jobs = ({ data }) => {
                 id={`panel-${i}`}
                 role="tabpanel"
                 aria-labelledby={`tab-${i}`}
-                tabIndex={activeTabId === i ? '0' : '-1'}
+                tabIndex={activeTabId === i ? 0 : -1}
                 hidden={activeTabId !== i}>
                 <StyledJobTitle>
                   <span>{title}</span>

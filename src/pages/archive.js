@@ -120,8 +120,9 @@ const ArchivePage = ({ location, data }) => {
               {projects.length > 0 &&
                 projects.map(({ node }, i) => {
                   const { date, github, external, title, tech, company } = node.frontmatter;
+                  const projectKey = external || github || title;
                   return (
-                    <tr key={i} ref={el => (revealProjects.current[i] = el)}>
+                    <tr key={projectKey} ref={el => (revealProjects.current[i] = el)}>
                       <td className="overline year">{`${new Date(date).getFullYear()}`}</td>
 
                       <td className="title">{title}</td>
@@ -132,11 +133,13 @@ const ArchivePage = ({ location, data }) => {
 
                       <td className="tech hide-on-mobile">
                         {tech.length > 0 &&
-                          tech.map((item, i) => (
-                            <span key={i}>
+                          tech.map((item, itemIndex) => (
+                            <span key={`${projectKey}-${item}-${itemIndex}`}>
                               {item}
                               {''}
-                              {i !== tech.length - 1 && <span className="separator">&middot;</span>}
+                              {itemIndex !== tech.length - 1 && (
+                                <span className="separator">&middot;</span>
+                              )}
                             </span>
                           ))}
                       </td>
@@ -144,12 +147,20 @@ const ArchivePage = ({ location, data }) => {
                       <td className="links">
                         <span>
                           {external && (
-                            <a href={external} aria-label="External Link">
+                            <a
+                              href={external}
+                              target="_blank"
+                              rel="nofollow noopener noreferrer"
+                              aria-label="External Link">
                               <FormattedIcon name="External" />
                             </a>
                           )}
                           {github && (
-                            <a href={github} aria-label="GitHub Link">
+                            <a
+                              href={github}
+                              target="_blank"
+                              rel="nofollow noopener noreferrer"
+                              aria-label="GitHub Link">
                               <FormattedIcon name="GitHub" />
                             </a>
                           )}

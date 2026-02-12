@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import PropTypes from 'prop-types';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { throttle } from '@utils';
-import { navLinks, navHeight } from '@config';
+import { navLinks } from '@config';
 import { Menu } from '@components';
 import { IconLogo } from '@components/icons';
 import styled from 'styled-components';
@@ -157,7 +157,9 @@ const StyledResumeButton = styled.a`
   margin-left: 10px;
   font-size: ${fontSizes.smish};
 `;
+
 const DELTA = 5;
+const NAV_HIDE_THRESHOLD = parseInt(theme.navHeight, 10);
 
 class Nav extends Component {
   state = {
@@ -201,7 +203,7 @@ class Nav extends Component {
     }
     if (fromTop < DELTA) {
       this.setState({ scrollDirection: 'none' });
-    } else if (fromTop > lastScrollTop && fromTop > navHeight) {
+    } else if (fromTop > lastScrollTop && fromTop > NAV_HIDE_THRESHOLD) {
       if (scrollDirection !== 'down') {
         this.setState({ scrollDirection: 'down' });
       }

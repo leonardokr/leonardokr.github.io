@@ -5,13 +5,9 @@ module.exports = {
     'Leonardo Klein, Leonardo, Klein, leonardokr, software engineer, developer, python, java, php, aws',
   siteUrl: 'https://leonardokr.github.io/',
   siteLanguage: 'en_US',
-  googleAnalyticsID: '',
   googleVerification: '',
-  name: 'Leonardo Klein',
-  location: 'MT, Brasil',
   email: 'leo@ziondev.us',
   github: 'https://github.com/leonardokr',
-  twitterHandle: '@',
   socialMedia: [
     {
       name: 'GitHub',
@@ -41,8 +37,6 @@ module.exports = {
       url: '/#contact',
     },
   ],
-
-  navHeight: 100,
 
   srConfig: (delay = 200) => ({
     origin: 'bottom',

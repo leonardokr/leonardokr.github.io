@@ -275,8 +275,7 @@ class Nav extends Component {
                   navLinks &&
                   navLinks.map(({ url, name }, i) => (
                     <CSSTransition key={url} classNames={fadeDownClass} timeout={timeout}>
-                      <StyledListItem
-                        style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
+                      <StyledListItem style={{ transitionDelay: `${isHome ? i * 100 : 0}ms` }}>
                         <StyledListLink to={url}>{name}</StyledListLink>
                       </StyledListItem>
                     </CSSTransition>

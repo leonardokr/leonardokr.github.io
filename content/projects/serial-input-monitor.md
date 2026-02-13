@@ -5,10 +5,10 @@ github: 'https://github.com/leonardokr/serial-input-monitor'
 external: ''
 tech:
   - Python
-  - Serial
-  - Monitoring
+  - Arduino
+  - Serial COM
 company: ''
 showInProjects: true
 ---
 
-A serial communication monitoring tool to inspect, validate, and debug incoming device input in real time.
+Serial Input Monitor is a comprehensive system that enables Arduino serial keyboard control and Arduino serial mouse control through serial communication with an Arduino Uno.

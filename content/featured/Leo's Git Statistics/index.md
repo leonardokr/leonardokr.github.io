@@ -1,15 +1,15 @@
 ---
 date: '4'
 title: "Leo's Git Statistics"
-cover: ''
+cover: 'leo-git-statistics.png'
 github: 'https://github.com/leonardokr/leo-git-statistics'
 external: ''
 tech:
   - Python
-  - Git
-  - CLI
+  - SVG
+  - YAML
 
 showInProjects: true
 ---
 
-A statistics tool to analyze Git repositories and generate insights about commits, contributors, and project activity.
+A statistics tool to analyze GitHub repositories and generate images about commits, contributors, and project activity to use on your README file or other Dashboard.

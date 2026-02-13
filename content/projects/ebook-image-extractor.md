@@ -6,9 +6,9 @@ external: ''
 tech:
   - Python
   - Ebook
-  - Extraction
+  - EPUB/MOBI
 company: ''
 showInProjects: true
 ---
 
-A utility for extracting images from ebook files to simplify archival, analysis, and media reuse workflows.
+Python tool to extract images from eBook files (EPUB and MOBI/AZW) with intelligent filtering and automatic organization.

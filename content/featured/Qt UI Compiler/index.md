@@ -1,15 +1,15 @@
 ---
 date: '5'
 title: 'Qt UI Compiler'
-cover: ''
+cover: 'qt-ui-compiler.png'
 github: 'https://github.com/leonardokr/qt-ui-compiler'
 external: ''
 tech:
-  - Python
+  - Kotlin
   - Qt
-  - CLI
+  - JetBrains
 
 showInProjects: true
 ---
 
-A utility to compile and streamline Qt UI workflows, helping convert and manage UI files for application development.
+A JetBrains IDE extension that automates the generation of code from Qt Designer XML user interface files. It ensures that the visual design remains synchronized with the implementation by monitoring changes and invoking the appropriate compilation tools automatically.
